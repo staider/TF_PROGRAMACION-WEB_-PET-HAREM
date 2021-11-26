@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>PetHarem</title>
+
+<!-- Custom fonts for this template-->
+<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+	type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
+
+<!-- Custom styles for this template-->
+<link href="/css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+	<span sec:authentication="name"></span>
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+		<!-- Slidebar -->
+		<div th:replace="fragments/slidebar :: slidebar"></div>
+		<!-- End of Slidebar -->
+
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<!-- Topbar -->
+				<div th:replace="fragments/topbar :: topbar"></div>
+				<!-- End of Topbar -->
+
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+
+					<!-- Page Heading -->
+					<h1 class="h3 mb-4 text-gray-800">Emprendmientos</h1>
+
+					<a th:href="@{/emprendimiento/irRegistrar}"
+						class="btn btn-danger btn-xs">Emprendimiento </a> <a
+						th:href="@{/emprendimiento/irBuscar}"
+						class="btn btn-danger btn-xs">Buscar</a>
+
+					<hr class="sidebar-divider">
+
+					<table class="table table-striped">
+						<thead class="thead-dark">
+							<tr>
+								<th class="text-center">CODIGO</th>
+								<th class="text-center">NOMBRE</th>
+								<th class="text-center">RUC</th>
+								<th class="text-center">DIRECCION</th>
+								<th class="text-center">DISTRITO</th>
+								<th class="text-center">OPERACION</th>
+								<th class="text-center">OPERACION</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="em: ${listaEmpres}">
+								<td th:text="${em.idEmpre}"></td>
+								<td th:text="${em.NEmpre}"></td>
+								<td th:text="${em.numRUC}"></td>
+								<td th:text="${em.TDireccion}"></td>
+								<td th:text="${em.distrito.nameDistrito}"></td>
+								<td><a
+									th:href="@{/emprendimiento/eliminar?id=}+${em.idEmpre}">Eliminar</a></td>
+								<td><a
+									th:href="@{'/emprendimiento/modificar/'}+${em.idEmpre}">Modificar</a></td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+				<!-- /.container-fluid -->
+
+			</div>
+			<!-- End of Main Content -->
+
+			<div th:if="${mensaje}" class="alert alert-danger">
+				<p th:text="${mensaje}"></p>
+			</div>
+
+			<!-- Footer -->
+			<div th:replace="fragments/footer :: footer"></div>
+			<!-- End of Footer -->
+
+		</div>
+		<!-- End of Content Wrapper -->
+
+	</div>
+	<!-- End of Page Wrapper -->
+
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fas fa-angle-up"></i>
+	</a>
+
+	<!-- Logout Modal-->
+	<div th:replace="fragments/logout:: logout"></div>
+
+	<!-- Bootstrap core JavaScript-->
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Core plugin JavaScript-->
+	<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script src="/js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>PetHarem</title>
+
+<!-- Custom fonts for this template-->
+<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+	type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
+
+<!-- Custom styles for this template-->
+<link href="/css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+		<span sec:authentication="name"></span>
+
+		<!-- Slidebar -->
+		<div th:replace="fragments/slidebar :: slidebar"></div>
+		<!-- End of Slidebar -->
+
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<!-- Topbar -->
+				<div th:replace="fragments/topbar :: topbar"></div>
+				<!-- End of Topbar -->
+
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+
+					<!-- Page Heading -->
+					<h1 class="h3 mb-4 text-gray-800">Plan</h1>
+
+					<hr class="sidebar-divider">
+
+					<form th:action="@{/plan/registrar}" method="post"
+						th:object="${plan}">
+						<div class="form-group">
+						
+							<label for="idPlan">ID:</label>
+							<input type="text" class="form-control" th:field="*{idPlan}"></input>
+
+							<div class="form-group">
+								<label for="nombre">Plan:</label>
+								<input type="text" class="form-control" th:field="*{NPlan}"
+								th:errorclass="'form-control alert-danger'" ></input>
+
+								<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('NPlan')}"
+								th:errors="*{NPlan}"></small>
+
+								<label for="costo">Costo:</label> <input type="number"
+									class="form-control" th:field="*{Costo}" id="costo"></input>
+
+								<div class="alert alert-danger"
+									th:if="${#fields.hasErrors('Costo')}" th:errors="*{Costo}">
+								</div>
+
+								<div class="form-group">
+									<label for="fechaInicio">FECHA INICIO:</label> <input
+										type="date" class="form-control" th:field="*{fechaInicio}"
+										id="fechaInicio"></input>
+									<div class="alert alert-danger"
+										th:if="${#fields.hasErrors('fechaInicio')}"
+										th:errors="*{fechaInicio}"></div>
+
+									<div class="form-group">
+										<label for="fechaFin">FECHA FIN:</label> <input type="date"
+											class="form-control" th:field="*{fechaFin}" id="fechaFin"></input>
+										<div class="alert alert-danger"
+											th:if="${#fields.hasErrors('fechaFin')}"
+											th:errors="*{fechaFin}"></div>
+
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+						<button type="submit" class="btn btn-primary">Aceptar</button>
+						<a href="/duenio/listar" class="btn btn-danger">Cancelar</a>
+					</form>
+
+				</div>
+				<!-- /.container-fluid -->
+
+			</div>
+			<!-- End of Main Content -->
+
+			<div th:if="${mensaje}" class="alert alert-danger">
+				<p th:text="${mensaje}"></p>
+			</div>
+
+			<!-- Footer -->
+			<div th:replace="fragments/footer :: footer"></div>
+			<!-- End of Footer -->
+
+		</div>
+		<!-- End of Content Wrapper -->
+
+	</div>
+	<!-- End of Page Wrapper -->
+
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fas fa-angle-up"></i>
+	</a>
+
+	<!-- Logout Modal-->
+	<div th:replace="fragments/logout:: logout"></div>
+
+	<!-- Bootstrap core JavaScript-->
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Core plugin JavaScript-->
+	<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script src="/js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>

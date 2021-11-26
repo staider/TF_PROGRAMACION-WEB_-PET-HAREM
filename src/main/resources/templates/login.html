@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
+<meta charset="UTF-8">
+<title>Pet-Harem</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" />
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+
+	<div class="container" align="center">
+	<div class="sidenav">
+         <div class="login-main-text">
+            <h2>PET<br> HAREM</h2>
+            <p>Ingresa tus datos para tener acceso.</p>
+             <ul class="navbar-nav ml-auto">
+                    <li class="nav-link">
+                        <a class="btn btn-primary btn-block btn-inicio" th:href="@{/inicio}">Inicio</a>
+                    </li>
+                </ul>
+         </div>
+      </div>
+       <div class="card-text text-center">
+                                <div class="social-icons">
+                                    <a href="https://www.facebook.com/staider" class="btn btn-circle my-social-btn fb"><i class="fa fa-facebook"></i></a>
+                                    <a href="https://twitter.com/DelgadoDoyler" class="btn btn-circle my-social-btn twitter"><i class="fa fa-twitter"></i></a>     
+                                </div>
+                            </div>
+      <div class="main">
+  
+          <br><br><br><br><br><br><br><br>
+              	<form th:action="@{/login}" method="post">
+
+					<div class="col-sm-6">
+						<img th:src="@{/imagenes/LOGO.jpg}" height="75%" width="65%" />
+					</div>
+					<div class="col-sm-6"><p  class="btn btn-lg btn-danger btn-block">Iniciar Sesión</p></div>
+<br>
+<br>
+
+					<div class="col-sm-6">
+						<input type="text" name="username" id="username"
+							class="form-control" placeholder="usuario" autofocus required />
+					</div>
+<br>
+
+
+					<div class="col-sm-6">
+						<input type="password" name="password" id="password"
+							class="form-control" placeholder="clave" required />
+					</div>
+<br>
+
+					<div class="col-sm-6">
+						<input type="submit" class="btn btn-lg btn-danger btn-block"
+							value="Ingresar" />
+							<br>
+							<hr class="sidebar-divider">
+						<a th:href="@{registro}" class="btn btn-danger">Registrate</a>
+						<a th:href="@{registroAdmin}" class="btn btn-danger">PetHarem</a>
+					</div>
+				</form>
+           
+    
+      </div>
+		<div align="center" class="col-sm-6">
+			<div class="alert alert-success" th:if="${success != null}"
+				th:text="${success}"></div>
+			<div class="alert alert-danger" th:if="${error != null}"
+				th:text="${error}"></div>
+			<div class="alert alert-info" th:if="${info != null}"
+				th:text="${info}"></div>
+		</div>
+	</div>
+
+
+
+</body>
+
+<style>
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.btn-inicio {
+    width: 138px;
+    background: #1fc6d8 !important;
+    border: 1px solid #1fc6d8 !important;
+}
+.btn-inicio:hover{
+       background: #3683a1 !important;
+    border: 1px solid #1fc6d8 !important;
+}
+.main-head{
+    height: 150px;
+    background: #FFF;
+   
+}
+
+.sidenav {
+    height: 100%;
+  
+    background: url('imagenes/v.gif') no-repeat center center;
+      background-color: #000;
+    overflow-x: hidden;
+  
+}
+
+
+.main {
+    padding: 20px 10px;
+   
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+}
+
+@media screen and (max-width: 450px) {
+    .login-form{
+        margin-top: 20%;
+    }
+
+    .register-form{
+        margin-top: 10%;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .main{
+        margin-left: 40%; 
+    }
+
+    .sidenav{
+        width: 40%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+    }
+
+    .login-form{
+        margin-top: 80%;
+    }
+
+    .register-form{
+        margin-top: 20%;
+    }
+}
+
+
+.login-main-text{
+    margin-top: 20%;
+    padding: 60px;
+    color: #fff;
+}
+
+.login-main-text h2{
+    font-weight: 300;
+}
+
+.btn-black{
+    background-color: #000 !important;
+    color: #fff;
+}
+</style>
+</html>
